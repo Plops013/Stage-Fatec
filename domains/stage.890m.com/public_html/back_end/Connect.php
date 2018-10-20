@@ -43,7 +43,7 @@ var $result;
  }
  }
  
- //Esta função desconecta do Banco
+ //Esta função desconecta do Banco ddd
  public function disconnect()
  {
  return mysqli_close($this->link);
