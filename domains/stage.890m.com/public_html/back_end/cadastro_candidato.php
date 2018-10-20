@@ -1,7 +1,11 @@
 <?php
-        include 'Conexão.php';  $conn = new CONEXAO();
-        include 'Candidato.php';
-
+        
+        include_once 'Candidato.php';
+        include_once 'Connect.php';
+        
+        echo "coco";
+        
+        $nome = $_POST['nome'];
         $email = $_POST['email'];
         $pass = md5($_POST['pass']);
         $cpf = $_POST['cpf'];
@@ -10,105 +14,30 @@
         $idade = $_POST['idade'];
         $faculdade = $_POST['faculdade'];
         $telefone = $_POST['telefone'];
-
-        echo "Connected successfully";
         
-        $sql = Candidato::insert($email,$pass,$cpf,$cidade,$estado,$idade,$faculdade,$telefone,$concorre);
+        $c = new Candidato;
+        $query = $c->insert($email, $pass, $cpf, $cidade, $estado, $idade, $faculdade, $telefone, $nome);
+        $conn = new MySQL;
+        $conn->executeQuery($query);
+        $conn->disconnect();
+        header("Location:../Site/loguin_msg.php");
+        setcookie('cadastrou','1')
+        /*
+        $del = $c->delete('12345');
+        $conn->executeQuery($del);
+        $conn->disconnect();
         
-        CONEXAO::Query($sql);
+        $query2 = "SELECT * FROM users ORDER BY id DESC";
+        $result = $c->getData($query2);
         
-
-    /*public function insert($email)
-    {
-        include 'Conexão.php';  $O_Conexao = new CONEXAO();
-
-        try
-        {
-            $stmt = $O_Conexao::prepare($sql);
-            if($stmt->execute())
-            {
-                echo "INSERT!!";
-            }
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();
-        }
-
+    foreach ($result as $key => $res) {
+    //while($res = mysqli_fetch_array($result)) {         
+        echo "<tr>";
+        echo "<td>".$res['NOME']."</td>";
+        echo "<td>".$res['IDADE']."</td>";
+        echo "<td>".$res['EMAIL']."</td>";    
+        echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";        
     }
-
-    public function update($registro)
-    {
-        $sql  = "UPDATE CANDIDATOS SET var = :var, WHERE var = :var";
-        try
-        {
-            $stmt = connectionDB::prepare($sql);
-            if($stmt->execute()){
-                echo "UPDATE!!";
-            }
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();
-        }
-    }
-
-    public function findAll()
-    {
-        $sql = "SELECT * FROM table";
-        try
-        {
-            $stmt = connectionDB::prepare($sql);
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_CLASS,'table');
-            }
-            else {
-             //   return new Class();
-            }
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();
-        }
-    }
-
-    public function createObject($r)
-    {
-        try{
-         //   $var= new Class($r['var1'], $r['var2']);
-            return $var;
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();   
-        }
-    }
-}
-
-/*
-$servername = "localhost";
-$database = "u687165544_stage";
-$username = "u687165544_fatec";
-$password = "fatecanos2000";
-$email = $_POST['email'];
-$pass = md5($_POST['pass']);
-$cpf = $_POST['cpf'];
-$cidade = $_POST['cidade'];
-$estado = $_POST['estado'];
-$idade = $_POST['idade'];
-$faculdade = $_POST['faculdade'];
-$telefone = $_POST['telefone'];
-
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-
-
-if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-}
+*/
  
-echo "Connected successfully";
- 
- $statement = $pdo->prepare('INSERT INTO CANDIDATOS (EMAIL, SENHA, IDADE, CPF, CANDIDATO_CIDADE, CANDIDATO_ESTADO, FACULDADE, TELEFONE, CONCORRE) VALUES (:email, :pass, :idade, :cpf, :cidade, :estado, :faculdade, :telefone, :concorre)');
-
- if (mysqli_query($conn, $sql)) {
-      echo "New record created successfully";
-      header("Location:../index.php");
-}    
-
-mysqli_close($conn);
- * 
- */
 ?>

@@ -1,51 +1,52 @@
 <?php
-class Candidato { 
         
-    public function insert($email,$pass,$cpf,$cidade,$estado,$idade,$faculdade,$telefone,$concorre)
+        
+    class Candidato { 
+        var $nome;
+        var $email;
+        var $pass;
+        var $cpf;
+        var $cidade;
+        var $estado;
+        var $idade;
+        var $faculdade;
+        var $telefone;
+    
+    public function insert($email,$pass,$cpf,$cidade,$estado,$idade,$faculdade,$telefone,$nome)
     {
-        $sql = 'INSERT INTO CANDIDATOS (EMAIL, SENHA, IDADE, CPF, CANDIDATO_CIDADE, CANDIDATO_ESTADO, FACULDADE, TELEFONE, CONCORRE) VALUES ('+ $email +', '+ $pass +', '+ $idade +', '+ $cpf +', '+ $cidade +', '+ $estado +', '+ $faculdade +', '+ $telefone +', '+ $concorre +')';
-        
+        $sql ="INSERT INTO CANDIDATOS (EMAIL, SENHA, IDADE, CPF, CANDIDATO_CIDADE, CANDIDATO_ESTADO, FACULDADE, TELEFONE, NOME) VALUES ('$email', '$pass', '$idade', '$cpf', '$cidade', '$estado', '$faculdade', '$telefone','$nome')";
         return $sql;
     }
-/*
-    public function update($registro)
+    
+        public function alterar($cpf_antigo,$email,$pass,$cpf,$cidade,$estado,$idade,$faculdade,$telefone,$nome)
     {
-        $sql  = "UPDATE CANDIDATOS SET var = :var, WHERE var = :var";
-        try
-        {
-            $stmt = connectionDB::prepare($sql);
-            if($stmt->execute()){
-                echo "UPDATE!!";
-            }
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();
-        }
+            $sql ="UPDATE CANDIDATOS"
+                . " SET EMAIL = '$email', SENHA = '$pass', IDADE = '$idade', CPF = '$cpf', CANDIDATO_CIDADE = '$cidade', CANDIDATO_ESTADO = '$estado', FACULDADE = '$faculdade', TELEFONE = '$telefone', NOME = '$nome'"
+                . " WHERE CPF = $cpf_antigo";
+        return $sql;
     }
-
-    public function findAll()
-    {
-        $sql = "SELECT * FROM table";
-        try
-        {
-            $stmt = connectionDB::prepare($sql);
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_CLASS,'table');
-            }
-            else {
-             //   return new Class();
-            }
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();
-        }
+    public function delete($email){
+        $sql ="DELETE FROM CANDIDATOS WHERE EMAIL = '$email'";
+        return $sql; 
     }
-
-    public function createObject($r)
-    {
-        try{
-         //   $var= new Class($r['var1'], $r['var2']);
-            return $var;
-        } catch (PDOException $e){
-            echo "Err ->" . $e->getMessage();   
+    
+    public function consulta($cpf){
+        $sql ="SELECT * FROM CANDIDATOS WHERE CPF = '$cpf'";
+    }
+     
+    public function getData($query)
+    {        
+        $connection = new MySQL;
+        $result = $connection->executeQuery($query);
+      
+        if ($result == false) {
+            return false;
+        } 
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
         }
-    }*/
+        $connection->disconnect();
+        return $rows;
+    }
 }
