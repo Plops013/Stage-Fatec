@@ -1,32 +1,15 @@
 <!DOCTYPE html>
-<?php 
-                            if(!isset($_COOKIE['email'])){
-                                header("Location:../Site/home.php");
-                            }
-                            
-                            
-                            $servername = "localhost";
-                            $database = "u687165544_stage";
-                            $username = "u687165544_fatec";
-                            $password = "fatecanos2000";
-                            $query = "SELECT NAME FROM CANDIDATOS";
-                            
-                            $cpf;
-                            
-                            $conn = mysqli_connect($servername, $username, $password, $database);
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            } 
-                            $sql = "SELECT * FROM CANDIDATOS";
-                            
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    if($_COOKIE['email'] == $row["EMAIL"]){
-                                    
-                         ?>
+<?php  
+    if(!isset($_COOKIE['email'])){
+    header("Location:../Site/home.php");
+    }
+    else{
+    include_once '../back_end/Candidato.php';
+    $email = $_COOKIE['email'];
+    $candidato = new Candidato();
+    $c = $candidato -> getCandidato($email);
+    }
+    ?>
 <html>
 
 <head>
@@ -52,12 +35,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 bg-light">
-          <form method="POST" action="../back_end/alterar_candidato.php">
+          <form method="POST" action="../back_end/Candidato.php">
+            <input type="hidden" name="method" value="alterar">
             <div class="form-group" >
               <small class="form-text text-muted">
                 <b>Insira seu nome:</b>
               </small>
-              <input type="text" class="form-control" placeholder="" value="<?php print $row['NOME'];  ?>" name="nome" id="nome" required> </div>
+              <input type="text" class="form-control" placeholder="" value="<?php print $c->nome;  ?>" name="nome" id="nome" required> </div>
               <div class="form-group" >
               <small class="form-text text-muted">
                 <b>Insira sua senha:</b>
@@ -67,39 +51,39 @@
               <small class="form-text text-muted">
                 <b>Insira seu CPF:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['CPF'];  ?>" placeholder="00011122233" name="cpf" id="cpf">
-              <input type="hidden" class="form-control" value="<?php print $row['CPF'];  ?>" name="cpf_antigo" id="cpf">
+              <input type="text" class="form-control" value="<?php print $c->cpf;  ?>" placeholder="00011122233" name="cpf" id="cpf">
+              <input type="hidden" class="form-control" value="<?php print $c->cpf;  ?>" name="cpf_antigo" id="cpf">
             </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira seu email:</b>
               </small>
-              <input type="email" class="form-control" value="<?php print $row['EMAIL'];  ?>" placeholder="seuemail@provedor.com" name="email" id="email"> </div>
+              <input type="email" class="form-control" value="<?php print $c->email;  ?>" placeholder="seuemail@provedor.com" name="email" id="email"> </div>
                <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira sua idade:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['IDADE'];  ?>" placeholder="21" name="idade" id="idade"> </div>
+              <input type="text" class="form-control" value="<?php print $c->idade;  ?>" placeholder="21" name="idade" id="idade"> </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira seu telefone:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['TELEFONE'];  ?>" placeholder="13988887777" name="telefone" id="telefone"> </div>
+              <input type="text" class="form-control" value="<?php print $c->telefone;  ?>" placeholder="13988887777" name="telefone" id="telefone"> </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira sua cidade</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['CANDIDATO_CIDADE'];  ?>" placeholder="Sua cidade" name="cidade" id="cidade"> </div>
+              <input type="text" class="form-control" value="<?php print $c->cidade;  ?>" placeholder="Sua cidade" name="cidade" id="cidade"> </div>
               <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira seu Estado</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['CANDIDATO_ESTADO'];  ?>" placeholder="SP" name="estado" id="estado"> </div>
+              <input type="text" class="form-control" value="<?php print $c->estado;  ?>" placeholder="SP" name="estado" id="estado"> </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira sua instituição de ensino:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['FACULDADE'];  ?>" placeholder="FATEC PG" name="faculdade" id="faculdade"> </div>
+              <input type="text" class="form-control" value="<?php print $c->faculdade;  ?>" placeholder="FATEC PG" name="faculdade" id="faculdade"> </div>
               <button type="submit" class="btn btn-primary">Enviar</button>
               <a href="home2.php"><button type="button" class="btn btn-primary">Cancelar</button></a>
               <div class="row"><hr></div> 
@@ -147,12 +131,4 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
 </body>
-                        <?php
-                        }
-                                }
-                            } else {
-                                echo "0 results";
-                            }
-                            $conn->close();
-                        ?>
 </html>

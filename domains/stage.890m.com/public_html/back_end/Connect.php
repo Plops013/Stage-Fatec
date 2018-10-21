@@ -25,12 +25,11 @@ var $result;
  {
  $this->connect();
  $this->query=$query;
- $this->result= mysqli_query($this->link,$this->query);
- if($this->result)
+ $result= mysqli_query($this->link,$this->query);
+ if($result)
  {
- echo "<p>cad ok</p>";
  $this->disconnect(); 
- return $this->result;
+ return $result;
  }
  else
  {
