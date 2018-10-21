@@ -20,6 +20,8 @@
         $conn = new MySQL;
         $conn->executeQuery($query);
         $conn->disconnect();
+        session_start();
+        $_SESSION["username"] = $nome;
         header("Location:../Site/loguin_msg.php");
         setcookie('cadastrou','1')
         /*

@@ -3,22 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/perfil.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/back_end/Connect.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/gerenciar_vagas.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/back_end/Candidato.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/home.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/participacoes.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/loguin_msg.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/alterar_candidatos.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/alterar_empresa.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/back_end/login.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/registrar_candidatos.html</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/registrar_empresas.html</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/teste.html</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/loguin_empresas.html</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/login_candidatos.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/back_end/Connect.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/loguin_candidatos.html</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/home2.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/ranking.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/styleguide.html</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/Site/home.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/back_end/cadastro_candidato.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/domains/stage.890m.com/public_html/back_end/disconnect_user.php</file>
         </group>
     </open-files>
 </project-private>

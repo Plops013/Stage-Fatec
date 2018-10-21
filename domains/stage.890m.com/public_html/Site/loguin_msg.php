@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
 
 <head>
@@ -29,18 +30,18 @@
   <div class="py-5" style="background-image: url('img/bg2.jpg');background-repeat:no-repeat;background-size:cover;">
     <div class="container">
       <div class="row">
-        <div class="col-md-3"> </div>
-        <div class="col-md-6">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
           <div class="card text-white p-5 bg-primary">
-            <div class="card-body">
+            <div class="card-body text-center">
                  <div class="">
-   
+                     <h1>Parabéns <span class='text-secondary'><?php echo $_SESSION['username']; ?></span></h1>
               <h2 class="mb-4" >Cadastro realizado com sucesso!</h2>
               <div class="row">
-                  <p class="col-12">Clieque em ok para efetuar loguin</p>
-                <div class="col-md-12">
-                     <a  href="loguin_candidatos.html">
-                    <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >OK</button>
+                  <h4 class="col-12 text-center">Clique em ok para efetuar login</h4>
+                <div class="col-md-12 mx-auto text-center">
+                     <a class='mx-auto text-center' href="login_candidatos.php">
+                    <button  type="button" class="btn btn-primary mx-auto text-center" style="background-color: #00BFFF;border-radius: 4px"  >OK</button>
                      </a>
             
                 </div>
@@ -91,5 +92,5 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
 </body>
-
+<?php session_destroy(); ?>
 </html>

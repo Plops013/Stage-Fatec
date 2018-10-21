@@ -19,7 +19,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <a  href="loguin_candidatos.html">
+        <a  href="login_candidatos.php">
         <button type="button" class="btn btn-primary">
           <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in</button>
           </a>
@@ -33,7 +33,7 @@
           <h1 class="display-3 bg-primary">Bem vindo ao sucesso!!</h1>
           <p class="lead mb-5">Venha conheçer nossas oportunidades e saia com uma carreira
             <br>Processos seletivos dinamicos e praticos para aproximar voce e as empresas mais facilmente</p>
-          <a href="loguin_candidatos.html" class="btn btn-lg btn-success m-0 w-25">Inscrever-se</a>
+          <a href="login_candidatos.php" class="btn btn-lg btn-success m-0 w-25">Inscrever-se</a>
         </div>
       </div>
     </div>

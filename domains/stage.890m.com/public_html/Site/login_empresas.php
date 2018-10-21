@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#"> Contacts</a>
+
           </li>
         </ul>
       </div>
@@ -39,25 +39,30 @@
         <div class="col-md-12">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a href="loguin_candidatos.html" class="nav-link active">
+              <a href="login_candidatos.php" class="nav-link">
                 <i class="fa fa-user-o"></i>&nbsp;Candidatos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="loguin_empresas.html">
+              <a class="nav-link active" href="login_empresas.php">
                 <i class="fa fa-building-o"></i>&nbsp;Empresas</a>
               </li></ul></div></div></div></div>
-              <h1 class="mb-4">Login</h1>
+              <h1 class="mb-4 text-center">Login Empresa</h1>
               <div class="row">
                 <div class="col-md-12">
-                    <form action="../back_end/login.php" method="POST" class="m-0">
+                    <?php
+                        session_start();
+                        if(isset($_SESSION['pass_erro_empresa'])){ ?>
+                        <p class='text-danger'>Login ou/e senha incorretos!</p>
+                    <?php } ?>
+                  <form method="POST" action="../back_end/login_empresa.php" class="m-0">
                     <div class="form-group">
                       <label>Email address</label>
-                      <input type="email" class="form-control" name="email" placeholder="Enter email" required> </div>
+                      <input type="email" class="form-control" placeholder="Enter email" name="email" required> </div>
                     <div class="form-group">
                       <label>Password</label>
-                      <input type="password" class="form-control" name="pass" placeholder="Password" required> </div>
+                      <input type="password" class="form-control" placeholder="Password" name="pass" required> </div>
                     <button type="submit" class="btn btn-secondary m-2">Logar</button>
-                      <a href="registrar_candidatos.html"><button type="button" class="btn btn-secondary m-2">Registrar-se</button></a>
+                      <a href="registrar_empresas.html"><button type="button" class="btn btn-secondary m-2">Registrar-se</button></a>
                   </form>
                 </div>
               </div>

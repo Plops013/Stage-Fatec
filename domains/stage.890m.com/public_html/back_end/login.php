@@ -17,10 +17,14 @@
       
         if (mysqli_num_rows($verifica)<=0){
           echo "Login e/ou senha incorretos";
-          header("Location:../Site/loguin_candidatos.html");
+          session_start();
+          $_SESSION["pass_erro"] = "Login e/ou senha incorretos";
+          header("Location:../Site/login_candidatos.php");
           die();
         }else{
+          session_start();
           echo "Logado com sucesso";
+          session_destroy();
           setcookie("email", $email,time() + 3600,'/');
           setcookie("candidato", $email,time() + 3600,'/');
           header("Location:../Site/home2.php");

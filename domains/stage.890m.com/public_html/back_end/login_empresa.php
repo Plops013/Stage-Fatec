@@ -16,14 +16,18 @@
    $verifica = mysqli_query($conn, "SELECT * FROM EMPRESA WHERE EMAIL = '$email' AND SENHA = '$senha'");
       
         if (mysqli_num_rows($verifica)<=0){
+          session_start();
+          $_SESSION["pass_erro_empresa"] = "Login e/ou senha incorretos";
+          header("Location:../Site/login_empresas.php");
           echo "Login e/ou senha incorretos";
           die();
-          header("Location:../Site/home.php");
         }else{
+          session_start();
           echo "Logado com sucesso";
+          session_destroy();
           setcookie("email", $email,time() + 3600,'/');
           setcookie("empresa", $email,time() + 3600,'/');
           header("Location:../Site/home2.php");
         }
-        
+        $_
         ?>
