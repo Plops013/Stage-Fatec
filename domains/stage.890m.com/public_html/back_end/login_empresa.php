@@ -27,6 +27,6 @@
           session_destroy();
           setcookie("email", $email,time() + 3600,'/');
           setcookie("empresa", $email,time() + 3600,'/');
-          header("Location:../Site/home2.php");
+          header("Location:../Site/empresa/home2.php");
         }
         ?>

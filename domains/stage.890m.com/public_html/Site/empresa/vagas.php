@@ -5,7 +5,7 @@
         <div class="col-md-12 bg-light">
             <br>
         <h1 class="display-4 mx-auto text-center">Cadastro de Vagas</h1>
-          <form method="POST" action="../back_end/Vaga.php">
+          <form method="POST" action="../../back_end/Vaga.php">
                  <input type="hidden" name="method" value="cadastrar">
             <div class="form-group" >
               <small class="form-text text-muted">
