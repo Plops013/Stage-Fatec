@@ -105,7 +105,7 @@
             </div>
                <div class="form-group">
               <button type="submit" class="btn btn-primary">Enviar</button>
-              <a href="home2.php"><button type="button" class="btn btn-primary">Cancelar</button></a>
+              <a href="perfil.php"><button type="button" class="btn btn-primary">Cancelar</button></a>
               <div class="row"><hr></div> 
           </form>
         </div>
