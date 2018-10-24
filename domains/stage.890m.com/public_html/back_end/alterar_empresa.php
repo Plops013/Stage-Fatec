@@ -30,7 +30,7 @@
           setcookie("email", $email,time() + 3600,'/');
           setcookie("empresa", $email,time() + 3600,'/');
           
-        header("Location:../Site/perfil.php");
+        header("Location:../Site/empresa/perfil.php");
         /*
         $del = $c->delete('12345');
         $conn->executeQuery($del);

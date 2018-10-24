@@ -70,11 +70,40 @@
                 <b>Cidade</b>
               </small>
               <input type="text" class="form-control" value="<?php print $row['CIDADE'];  ?>" placeholder="Sua cidade" name="cidade" id="cidade"> </div>
-              <div class="form-group">
+  <div class="form-group">
               <small class="form-text text-muted">
-                <b>Estado</b>
+                <b>Estado em que se situa a vaga:</b>
               </small>
-                  <input type="text" class="form-control" value="<?php print $row['ESTADO'];  ?>" placeholder="SP" name="estado" id="estado"> </div>
+                    <select class="form-control" id="estado" name="estado">
+                    <option <?php if($row['ESTADO'] == 'AC'){ ?> selected <?php } ?>>AC</option>
+                    <option <?php if($row['ESTADO'] == 'AL'){ ?> selected <?php } ?>>AL</option>
+                    <option <?php if($row['ESTADO'] == 'AP'){ ?> selected <?php } ?>>AP</option>
+                    <option <?php if($row['ESTADO'] == 'AM'){ ?> selected <?php } ?>>AM</option>
+                    <option <?php if($row['ESTADO'] == 'BA'){ ?> selected <?php } ?>>BA</option>
+                    <option <?php if($row['ESTADO'] == 'CE'){ ?> selected <?php } ?>>CE</option>
+                    <option <?php if($row['ESTADO'] == 'DF'){ ?> selected <?php } ?>>DF</option>
+                    <option <?php if($row['ESTADO'] == 'ES'){ ?> selected <?php } ?>>ES</option>
+                    <option <?php if($row['ESTADO'] == 'GO'){ ?> selected <?php } ?>>GO</option>
+                    <option <?php if($row['ESTADO'] == 'MA'){ ?> selected <?php } ?>>MA</option>
+                    <option <?php if($row['ESTADO'] == 'MT'){ ?> selected <?php } ?>>MT</option>
+                    <option <?php if($row['ESTADO'] == 'MS'){ ?> selected <?php } ?>>MS</option>
+                    <option <?php if($row['ESTADO'] == 'MG'){ ?> selected <?php } ?>>MG</option>
+                    <option <?php if($row['ESTADO'] == 'PA'){ ?> selected <?php } ?>>PA</option>
+                    <option <?php if($row['ESTADO'] == 'PB'){ ?> selected <?php } ?>>PB</option>
+                    <option <?php if($row['ESTADO'] == 'PR'){ ?> selected <?php } ?>>PR</option>
+                    <option <?php if($row['ESTADO'] == 'PE'){ ?> selected <?php } ?>>PE</option>
+                    <option <?php if($row['ESTADO'] == 'PI'){ ?> selected <?php } ?>>PI</option>
+                    <option <?php if($row['ESTADO'] == 'RJ'){ ?> selected <?php } ?>>RJ</option>
+                    <option <?php if($row['ESTADO'] == 'RN'){ ?> selected <?php } ?>>RN</option>
+                    <option <?php if($row['ESTADO'] == 'RS'){ ?> selected <?php } ?>>RS</option>
+                    <option <?php if($row['ESTADO'] == 'RO'){ ?> selected <?php } ?>>RO</option>
+                    <option <?php if($row['ESTADO'] == 'RR'){ ?> selected <?php } ?>>RR</option>
+                    <option <?php if($row['ESTADO'] == 'SC'){ ?> selected <?php } ?>>SC</option>
+                    <option <?php if($row['ESTADO'] == 'SP'){ ?> selected <?php } ?>>SP</option>
+                    <option <?php if($row['ESTADO'] == 'SE'){ ?> selected <?php } ?>>SE</option>
+                    </select>
+            </div>
+               <div class="form-group">
               <button type="submit" class="btn btn-primary">Enviar</button>
               <a href="home2.php"><button type="button" class="btn btn-primary">Cancelar</button></a>
               <div class="row"><hr></div> 
