@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="theme.css" type="text/css"> </head>
+  <link rel="stylesheet" href="../theme.css" type="text/css"> </head>
 
 <body class="">
 
@@ -26,7 +26,7 @@
                                                                     ?></a>
           </li>
         </ul>
-          <a href="../back_end/disconnect_user.php">
+          <a href="../../back_end/disconnect_user.php">
               <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="C:/Users/Lucas Monteiro/Desktop/New Site/loguin.html#"> &nbsp;Logoff</button></a>
       </div>
     </div>
@@ -51,86 +51,7 @@
                                 die("Connection failed: " . $conn->connect_error);
                             } 
                             
-                            if (isset($_COOKIE['candidato']) && !isset($_COOKIE['empresa'])){
-                            $sql = "SELECT * FROM CANDIDATOS";
-                            
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    if($_COOKIE['email'] == $row["EMAIL"] && !isset($_COOKIE['empresa']) && !isset($_COOKIE['candidato'])){
-                                    
-                         ?>
-  <div class="">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a href="home2.php" class="nav-link">
-                <i class="fa fa-home fa-home"></i>&nbsp;Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="perfil.php">
-                <i class="fa fa-address-card-o"></i>&nbsp;Perfil</a>
-
-            </li>
-            <li class="nav-item">
-              <a href="participacoes.php" class="nav-link">
-                  <i class="fa fa-handshake-o"></i>&nbsp;Participações</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6">
-            <div class="row"><hr></div>
-              <img src="img/perfil.jpg" id="foto-perfil"> </div>
-              
-              <div class="col-md-6">
-                        <div class="row"><hr></div>
-                        <li class="list-group-item" >
-                            Nome: <?php print $row['NOME'];  ?></li>
-                        <li class="list-group-item" >Idade: <?php print $row['IDADE'];  ?></li>
-                        <li class="list-group-item" >CPF: <?php print $row['CPF'];  ?></li>
-                        <li class="list-group-item">Email: <?php print $row['EMAIL'];  ?></li>
-                        <li class="list-group-item">Tel: <?php print $row['TELEFONE'];  ?></li>
-                        <li class="list-group-item">Estado: <?php print $row['CANDIDATO_ESTADO'];  ?></li>
-                        <li class="list-group-item">Cidade: <?php print $row['CANDIDATO_CIDADE'];  ?></li>
-                        <li class="list-group-item">Escolaridade: <?php print $row['FACULDADE'];  ?></li>
-                        <li class="list-group-item">Senha: <?php print "********";  ?></li>
-                        <?php
-                        }
-                                }
-                            } else {
-                                echo "0 results";
-                            }
-                            $conn->close();
-                        ?>
-                        <br>
-                        <div class="row">
-                  <div class="col-md-3">
-                     <a  href="alterar_candidatos.php">
-                    <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >Alterar Dados</button>
-                     </a>
-                  </div>
-                    <div class="col-md-6">
-                    <a  href="delete_msg.php">
-                        <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >Excluir Dados</button>  </a>     
-                      </div>
-                     </div>
-                </div>
-              
-                    </div> <div class="row"><hr></div>
-            </div> <div class="row"><hr></div>
-          </div>
-        </div>
-      </div>
- 
-                            <?php } elseif(isset ($_COOKIE['empresa']) && !isset($_COOKIE['candidato'])){ 
+                            if(isset ($_COOKIE['empresa']) && !isset($_COOKIE['candidato'])){ 
                                 $sql = "SELECT * FROM EMPRESA";
                             
                             $result = $conn->query($sql);
@@ -166,7 +87,7 @@
           <div class="row">
             <div class="col-md-6">
             <div class="row"><hr></div>
-              <img src="img/perfil.jpg" id="foto-perfil"> </div>
+              <img src="../img/perfil.jpg" id="foto-perfil"> </div>
               
               <div class="col-md-6">
                         <div class="row"><hr></div>

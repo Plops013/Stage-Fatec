@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+                            if(!isset($_COOKIE['email'])){
+                                header("Location:../Site/home.php");
+                            } ?>
 <html>
 
 <head>
@@ -10,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-md bg-primary navbar-dark bg-gradient">
     <div class="container">
-      <a class="navbar-brand" href="home.html">
+      <a class="navbar-brand" href="home2.php">
         <i class="fa d-inline fa-lg fa-cloud"></i>
         <b class="text-uppercase">Stage</b>
       </a>
@@ -18,41 +22,80 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <a href="loguin_candidatos.html">
-          <button type="button" class="btn btn-primary">
-            <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in</button>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="perfil.php">Bem Vindo:&nbsp;
+              <i class="fa d-inline fa-lg fa-user-circle-o"></i> 
+                                                                    <?php 
+                                                                    echo $_COOKIE['email'];
+                                                                    ?></a>
+          </li>
+        </ul>
+        <a href="../back_end/disconnect_user.php">
+          <button type="button" class="btn btn-primary"> &nbsp;Logoff</button>
         </a>
       </div>
     </div>
   </nav>
-  <div class="py-5">
+  <div class="">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="m-0 text-center" contenteditable="true">Teste Java</h1>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a href="home2.php" class="nav-link">
+                <i class="fa fa-home fa-home"></i>&nbsp;Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="perfil.php">
+                <i class="fa fa-address-card-o"></i>&nbsp;Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a href="participacoes.php" class="nav-link active">
+                  <i class="fa fa-handshake-o"></i>&nbsp;Minhas Vagas</a>
+                  </li>
+          </ul>
+          <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <a href="vagas.php">
+                <button class="btn btn-success"> Criar Vaga </button>
+                </a>
+            </div>
+          </div>
+            <br/>
         </div>
       </div>
-    </div>
-  </div>
-    <h3 id="h3questao">1.Qual o resultado ? </h3><ln>
-  <div class="py-5">
-    <div class="container">
       <div class="row">
-          <div class="col-md-6" id="h3questao">
-            <p>for (int i=0; i<10; i++){</p>
-            <p>   System.out.println(i+"*"+10+"="+i*10);</p>
-                <p>}</p>
+        <div class="col-md-12">
+          <div class="card-body bg-info">
+            <h4>Empresa x tecnolgy Ltda.</h4>
+            <h6 class="text-muted">Analista Desenvolvedor Java</h6>
+            <p>Procuramos Profissional que tenha conhecimento em Java</p>
+            <a href="ranking.php" class="btn btn-primary">Ver Raking</a>
+                <button class="btn btn-warning"> Alterar Vaga </button>
+                <button class="btn btn-danger"> Apagar Vaga </button>
+          </div>
         </div>
-        <div class="col-md-6" id="h3questao">
-            <form action="">
-                <input type="radio" name="gender" value="male"> 10<br>
-                <input type="radio" name="gender" value="female"> i<br>
-                <input type="radio" name="gender" value="other"> JAVA<br>
-                <input type="radio" name="gender" value="other"> N/A<br>
-            </form></div>
+      </div>
+      <div class="row">
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body bg-info">
+            <h4>Empresa x tecnolgy Ltda.</h4>
+            <h6 class="text-muted">Analista Desenvolvedor .NET</h6>
+            <p>Procuramos Profissional que tenha conhecimento em .NET</p>
+            <a href="ranking.php" class="btn btn-outline-dark">Ver Ranking</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+        </div>
       </div>
     </div>
-  </div>
   <div class="py-5 bg-dark text-white bg-gradient">
     <div class="container">
       <div class="row">
@@ -90,9 +133,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
+ 
 </body>
 
 </html>

@@ -43,27 +43,25 @@
         <div class="col-md-12">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a href="home2.php" class="nav-link">
+              <a href="home2.php" class="active nav-link">
                 <i class="fa fa-home fa-home"></i>&nbsp;Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="perfil.php">
+                <a class="nav-link" href="perfil.php">
                 <i class="fa fa-address-card-o"></i>&nbsp;Perfil</a>
             </li>
             <li class="nav-item">
-              <a href="participacoes.php" class="nav-link active">
-                  <i class="fa fa-handshake-o"></i>&nbsp;Minhas Vagas</a>
+                <a href="participacoes.php" class="nav-link">
+                  <i class="fa fa-handshake-o"></i>&nbsp;Participações</a>
                   </li>
           </ul>
           <div class="row">
             <div class="col-md-12">
-                <br/>
-                <a href="vagas.php">
-                <button class="btn btn-success"> Criar Vaga </button>
-                </a>
+              <div class="row">
+                <hr>
+              </div>
             </div>
           </div>
-            <br/>
         </div>
       </div>
       <div class="row">
@@ -72,9 +70,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor Java</h6>
             <p>Procuramos Profissional que tenha conhecimento em Java</p>
-            <a href="ranking.php" class="btn btn-primary">Ver Raking</a>
-                <button class="btn btn-warning"> Alterar Vaga </button>
-                <button class="btn btn-danger"> Apagar Vaga </button>
+            <a href="vaga.html" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>
@@ -87,15 +83,54 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor .NET</h6>
             <p>Procuramos Profissional que tenha conhecimento em .NET</p>
-            <a href="ranking.php" class="btn btn-outline-dark">Ver Ranking</a>
+            <a href="#" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>
       <div class="row">
         <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body bg-info">
+            <h4>Empresa x tecnolgy Ltda.</h4>
+            <h6 class="text-muted">Analista Desenvolvedor COBOL</h6>
+            <p>Procuramos Profissional que tenha conhecimento em COBOL</p>
+            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+          </div>
         </div>
       </div>
+      <div class="row">
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body bg-info">
+            <h4>Empresa x tecnolgy Ltda.</h4>
+            <h6 class="text-muted">Analista de Testes</h6>
+            <p>Procuramos Profissional que tenha conhecimento em testes</p>
+            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body bg-info">
+            <h4>Empresa x tecnolgy Ltda.</h4>
+            <h6 class="text-muted">Analista Desenvolvedor .NET</h6>
+            <p>Procuramos Profissional que tenha conhecimento em .NET</p>
+            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+      </div>
     </div>
+  </div>
   <div class="py-5 bg-dark text-white bg-gradient">
     <div class="container">
       <div class="row">

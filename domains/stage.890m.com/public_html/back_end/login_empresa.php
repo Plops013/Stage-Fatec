@@ -29,5 +29,4 @@
           setcookie("empresa", $email,time() + 3600,'/');
           header("Location:../Site/home2.php");
         }
-        $_
         ?>
