@@ -15,6 +15,7 @@
     
     public function insert($email,$pass,$cpf,$cidade,$estado,$idade,$faculdade,$telefone,$nome)
     {
+        //Gera a string sql que sera utilizada na função create candidato
         $sql ="INSERT INTO CANDIDATOS (EMAIL, SENHA, IDADE, CPF, CANDIDATO_CIDADE, CANDIDATO_ESTADO, FACULDADE, TELEFONE, NOME) VALUES ('$email', '$pass', '$idade', '$cpf', '$cidade', '$estado', '$faculdade', '$telefone','$nome')";
         return $sql;
     }
@@ -56,6 +57,7 @@
                             return $candidato;
         }
     
+        // variavel dados recebe a $_POST
         public function createCandidato($dados)
                 {
         $nome = $dados['nome'];
@@ -67,12 +69,18 @@
         $idade = $dados['idade'];
         $faculdade = $dados['faculdade'];
         $telefone = $dados['telefone'];
+        //cria um novo objeto candidato
         $c = new Candidato;
+        //gera a query
         $query = $c->insert($email, $pass, $cpf, $cidade, $estado, $idade, $faculdade, $telefone, $nome);
+        //faz a conexão
         $conn = new MySQL;
+        //executa a query gerada
         $conn->executeQuery($query);
+        //disconecta
         $conn->disconnect();
         session_start();
+        //apenas para quando cadastrar exibir o nome do usuario cadastrado, feedback
         $_SESSION["username"] = $nome;
         header("Location:../Site/loguin_msg.php");
         setcookie('cadastrou','1');
@@ -129,10 +137,16 @@
         return $rows;
     }
 }   
+
+    //verifica se houve algum request POST, ou seja, uma confirmação de formulario mandando para essa pagina
+    // como no caso tanto a pagina alterar quanto a pagina criar enviam um comando post, se faz a verificação atraves
+    // de um input hidden informando se é pra alterar ou cadastrar
     if(isset($_POST['method'])) { // aqui é onde vai decorrer a chamada se houver um *request* POST
+        // variavel method = o input hidden do form
      $method = $_POST['method'];
      if( $method == "cadastrar" ){
         $candidato = new Candidato;
+        // envia um vetor $_POST, com todas informações do post
         $candidato->createCandidato($_POST);
      }
      elseif ($method == "alterar" ){
