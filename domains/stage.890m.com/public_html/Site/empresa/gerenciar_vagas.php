@@ -14,7 +14,7 @@
                 <i class="fa fa-address-card-o"></i>&nbsp;Perfil</a>
             </li>
             <li class="nav-item">
-              <a href="participacoes.php" class="nav-link active">
+                <a href="gerenciar_vagas.php" class="nav-link active">
                   <i class="fa fa-handshake-o"></i>&nbsp;Minhas Vagas</a>
                   </li>
           </ul>
@@ -44,13 +44,15 @@
       <div class="row">
         <hr>
       </div>
-      <div class="row">
+            <div class="row">
         <div class="col-md-12">
           <div class="card-body bg-info">
             <h4>Empresa x tecnolgy Ltda.</h4>
-            <h6 class="text-muted">Analista Desenvolvedor .NET</h6>
-            <p>Procuramos Profissional que tenha conhecimento em .NET</p>
-            <a href="ranking.php" class="btn btn-outline-dark">Ver Ranking</a>
+            <h6 class="text-muted">Analista Desenvolvedor Java</h6>
+            <p>Procuramos Profissional que tenha conhecimento em Java</p>
+            <a href="ranking.php" class="btn btn-primary">Ver Raking</a>
+                <button class="btn btn-warning"> Alterar Vaga </button>
+                <button class="btn btn-danger"> Apagar Vaga </button>
           </div>
         </div>
       </div>

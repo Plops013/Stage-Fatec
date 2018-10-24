@@ -32,7 +32,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor Java</h6>
             <p>Procuramos Profissional que tenha conhecimento em Java</p>
-            <a href="vaga.html" class="btn btn-outline-dark">Visualizar</a>
+            <a href="desc_vagas.php" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor .NET</h6>
             <p>Procuramos Profissional que tenha conhecimento em .NET</p>
-            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+            <a href="desc_vagas.php" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor COBOL</h6>
             <p>Procuramos Profissional que tenha conhecimento em COBOL</p>
-            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+            <a href="desc_vagas.php" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista de Testes</h6>
             <p>Procuramos Profissional que tenha conhecimento em testes</p>
-            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+            <a href="desc_vagas.php" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor .NET</h6>
             <p>Procuramos Profissional que tenha conhecimento em .NET</p>
-            <a href="#" class="btn btn-outline-dark">Visualizar</a>
+            <a href="desc_vagas.php" class="btn btn-outline-dark">Visualizar</a>
           </div>
         </div>
       </div>

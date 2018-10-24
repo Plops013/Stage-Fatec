@@ -26,32 +26,13 @@
                                     if($_COOKIE['email'] == $row["EMAIL"]){
                                     
                          ?>
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="theme.css" type="text/css"> </head>
-
-<body>
-  <nav class="navbar navbar-expand-md bg-primary navbar-dark bg-gradient">
-    <div class="container">
-      <a class="navbar-brand" href="home.php">
-        <i class="fa d-inline fa-lg fa-cloud"></i>
-        <b class="text-uppercase">Stage</b>
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent"> </div>
-    </div>
-  </nav>
+  <?php include_once 'navbar_empresa.php'; ?>
   <div class="py-5" style="background-repeat:no-repeat;background-size:cover;background-image: url('img/bg3.jpg');;">
     <div class="container">
       <div class="row">
         <div class="col-md-12 bg-light">
-          <form method="POST" action="../back_end/alterar_empresa.php">
+          <form method="POST" action="../../back_end/alterar_empresa.php">
             <div class="form-group" >
               <small class="form-text text-muted">
                 <b>Nome Fantasia:</b>

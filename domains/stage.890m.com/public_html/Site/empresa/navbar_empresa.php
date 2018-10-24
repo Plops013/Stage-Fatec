@@ -30,7 +30,7 @@
                                                                     ?></a>
           </li>
         </ul>
-        <a href="../back_end/disconnect_user.php">
+        <a href="../../back_end/disconnect_user.php">
           <button type="button" class="btn btn-primary"> &nbsp;Logoff</button>
         </a>
       </div>
