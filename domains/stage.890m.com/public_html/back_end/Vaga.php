@@ -2,11 +2,13 @@
 
 class Vaga{
     
+var $id_vaga;
 var $nome;
 var $desc;
 var $cidade;
 var $estado;
-var $qtdvaga;
+var $qtd_vaga;
+var $cnpj_empresa;
     
     public function insert($qtd_vagas,$nome,$desc,$estado,$cidade,$cnpj)
     {
@@ -21,6 +23,28 @@ var $qtdvaga;
                 . " SET QTD_VAGAS = '$qtd_vagas', NOME = '$nome', DESCRICAO = '$desc', VAGA_ESTADO = '$estado', VAGA_CIDADE = '$cidade', CNPJ_EMPRESA = '$cnpj'"
                 . " WHERE ID = '$id'";
         return $sql;
+    }
+    
+    public function createVaga($dados){
+        
+                $nome = $dados['nome'];
+        $email = $dados['email'];
+        $pass = md5($dados['pass']);
+        $cpf = $dados['cpf'];
+        $cidade = $dados['cidade'];
+        $estado = $dados['estado'];
+        $idade = $dados['idade'];
+        $faculdade = $dados['faculdade'];
+        $telefone = $dados['telefone'];
+        
+        $c = new Candidato;
+        $query = $c->insert($email, $pass, $cpf, $cidade, $estado, $idade, $faculdade, $telefone, $nome);
+        
+        $conn = new MySQL;
+        $conn->executeQuery($query);
+        $conn->disconnect();
+        header("Location:../Site/empresa/minhas_vagas.php");
+        setcookie('cadastrou_vaga','1');
     }
     /*
         public function getCandidato($email){
