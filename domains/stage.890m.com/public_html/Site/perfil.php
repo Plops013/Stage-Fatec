@@ -36,7 +36,6 @@
                                 header("Location:../Site/home.php");
                             }
                             
-                            
                             $servername = "localhost";
                             $database = "u687165544_stage";
                             $username = "u687165544_fatec";
@@ -59,7 +58,7 @@
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                    if($_COOKIE['email'] == $row["EMAIL"] && !isset($_COOKIE['empresa']) && !isset($_COOKIE['candidato'])){
+                                    if($_COOKIE['email'] == $row["EMAIL"] && !isset($_COOKIE['empresa']) && isset($_COOKIE['candidato'])){
                                     
                          ?>
   <div class="">
