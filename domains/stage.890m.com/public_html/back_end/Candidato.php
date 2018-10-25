@@ -145,13 +145,13 @@
         // variavel method = o input hidden do form
      $method = $_POST['method'];
      if( $method == "cadastrar" ){
-        $candidato = new Candidato;
+        $empresa = new Candidato;
         // envia um vetor $_POST, com todas informações do post
-        $candidato->createCandidato($_POST);
+        $empresa->createCandidato($_POST);
      }
      elseif ($method == "alterar" ){
-        $candidato = new Candidato;
-        $candidato->alterCandidato($_POST); 
+        $empresa = new Candidato;
+        $empresa->alterCandidato($_POST); 
      }
      else{
      }

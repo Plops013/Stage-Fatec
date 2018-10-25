@@ -1,5 +1,7 @@
 <?php
-
+    
+    include_once 'Candidato.php';
+    
     $email = $_POST['email'];
     $senha = md5($_POST['pass']);
     
@@ -22,10 +24,13 @@
           header("Location:../Site/login_candidatos.php");
           die();
         }else{
+          $c = new Candidato();
+          $empresa = $c->getCandidato($email);
           session_start();
           echo "Logado com sucesso";
           session_destroy();
           setcookie("email", $email,time() + 3600,'/');
+          setcookie("nome", $empresa->nome,time() + 3600,'/');
           setcookie("candidato", $email,time() + 3600,'/');
           header("Location:../Site/home2.php");
         }

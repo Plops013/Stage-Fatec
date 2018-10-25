@@ -1,48 +1,34 @@
 <!DOCTYPE html>
-<?php 
-                            if(!isset($_COOKIE['email'])){
-                                header("Location:../Site/home.php");
-                            }
-                            
-                            
-                            $servername = "localhost";
-                            $database = "u687165544_stage";
-                            $username = "u687165544_fatec";
-                            $password = "fatecanos2000";
-                            
-                            $cpf;
-                            
-                            $conn = mysqli_connect($servername, $username, $password, $database);
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            } 
-                            $sql = "SELECT * FROM EMPRESA";
-                            
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    if($_COOKIE['email'] == $row["EMAIL"]){
-                                    
-                         ?>
+<?php  
+    if(!isset($_COOKIE['email'])){
+    header("Location:../Site/home.php");
+    }
+    
+    else{
+    include_once '../../back_end/Empresa.php';
+    $email = $_COOKIE['email'];
+    $empresa = new Empresa();
+    $c = $empresa->getEmpresa($email);
+    }
+    ?>
 
   <?php include_once 'navbar_empresa.php'; ?>
   <div class="py-5" style="background-repeat:no-repeat;background-size:cover;background-image: url('img/bg3.jpg');;">
     <div class="container">
       <div class="row">
         <div class="col-md-12 bg-light">
-          <form method="POST" action="../../back_end/alterar_empresa.php">
+            <form method="POST" action="../../back_end/Empresa.php">
+                <input type="hidden" name="method" value="alterar">
             <div class="form-group" >
               <small class="form-text text-muted">
                 <b>Nome Fantasia:</b>
               </small>
-              <input type="text" class="form-control" placeholder="" value="<?php print $row['NOME_FANTASIA'];  ?>" name="nome_fantasia" id="nome" required> </div>
+              <input type="text" class="form-control" placeholder="" value="<?php print $c->nome_fantasia ;  ?>" name="nome_fantasia" id="nome" required> </div>
               <div class="form-group">
               <small class="form-text text-muted">
                 <b>Razão Social:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['RAZAO_SOCIAL'];  ?>" placeholder="FATEC PG" name="razao_social" id="faculdade"> </div>
+              <input type="text" class="form-control" value="<?php print $c->razao_social ;  ?>" placeholder="FATEC PG" name="razao_social" id="faculdade"> </div>
               <div class="form-group" >
               <small class="form-text text-muted">
                 <b>Senha:</b>
@@ -52,55 +38,55 @@
               <small class="form-text text-muted">
                 <b>CNPJ:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['CNPJ'];  ?>" placeholder="00011122233" name="cnpj" id="cpf">
-              <input type="hidden" class="form-control" value="<?php print $row['CNPJ'];  ?>" name="cnpj_antigo" id="cpf">
+              <input type="text" class="form-control" value="<?php print $c->cnpj ;  ?>" placeholder="00011122233" name="cnpj" id="cpf">
+              <input type="hidden" class="form-control" value="<?php print $c->cnpj ;  ?>" name="cnpj_antigo" id="cpf">
             </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Email:</b>
               </small>
-              <input type="email" class="form-control" value="<?php print $row['EMAIL'];  ?>" placeholder="seuemail@provedor.com" name="email" id="email"> </div>
+              <input type="email" class="form-control" value="<?php print $c->email ;?>" placeholder="seuemail@provedor.com" name="email" id="email"> </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Telefone:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['TELEFONE'];  ?>" placeholder="13988887777" name="telefone" id="telefone"> </div>
+              <input type="text" class="form-control" value="<?php print $c->telefone ;  ?>" placeholder="13988887777" name="telefone" id="telefone"> </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Cidade</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $row['CIDADE'];  ?>" placeholder="Sua cidade" name="cidade" id="cidade"> </div>
+              <input type="text" class="form-control" value="<?php print $c->cidade ;  ?>" placeholder="Sua cidade" name="cidade" id="cidade"> </div>
   <div class="form-group">
               <small class="form-text text-muted">
                 <b>Estado em que se situa a vaga:</b>
               </small>
                     <select class="form-control" id="estado" name="estado">
-                    <option <?php if($row['ESTADO'] == 'AC'){ ?> selected <?php } ?>>AC</option>
-                    <option <?php if($row['ESTADO'] == 'AL'){ ?> selected <?php } ?>>AL</option>
-                    <option <?php if($row['ESTADO'] == 'AP'){ ?> selected <?php } ?>>AP</option>
-                    <option <?php if($row['ESTADO'] == 'AM'){ ?> selected <?php } ?>>AM</option>
-                    <option <?php if($row['ESTADO'] == 'BA'){ ?> selected <?php } ?>>BA</option>
-                    <option <?php if($row['ESTADO'] == 'CE'){ ?> selected <?php } ?>>CE</option>
-                    <option <?php if($row['ESTADO'] == 'DF'){ ?> selected <?php } ?>>DF</option>
-                    <option <?php if($row['ESTADO'] == 'ES'){ ?> selected <?php } ?>>ES</option>
-                    <option <?php if($row['ESTADO'] == 'GO'){ ?> selected <?php } ?>>GO</option>
-                    <option <?php if($row['ESTADO'] == 'MA'){ ?> selected <?php } ?>>MA</option>
-                    <option <?php if($row['ESTADO'] == 'MT'){ ?> selected <?php } ?>>MT</option>
-                    <option <?php if($row['ESTADO'] == 'MS'){ ?> selected <?php } ?>>MS</option>
-                    <option <?php if($row['ESTADO'] == 'MG'){ ?> selected <?php } ?>>MG</option>
-                    <option <?php if($row['ESTADO'] == 'PA'){ ?> selected <?php } ?>>PA</option>
-                    <option <?php if($row['ESTADO'] == 'PB'){ ?> selected <?php } ?>>PB</option>
-                    <option <?php if($row['ESTADO'] == 'PR'){ ?> selected <?php } ?>>PR</option>
-                    <option <?php if($row['ESTADO'] == 'PE'){ ?> selected <?php } ?>>PE</option>
-                    <option <?php if($row['ESTADO'] == 'PI'){ ?> selected <?php } ?>>PI</option>
-                    <option <?php if($row['ESTADO'] == 'RJ'){ ?> selected <?php } ?>>RJ</option>
-                    <option <?php if($row['ESTADO'] == 'RN'){ ?> selected <?php } ?>>RN</option>
-                    <option <?php if($row['ESTADO'] == 'RS'){ ?> selected <?php } ?>>RS</option>
-                    <option <?php if($row['ESTADO'] == 'RO'){ ?> selected <?php } ?>>RO</option>
-                    <option <?php if($row['ESTADO'] == 'RR'){ ?> selected <?php } ?>>RR</option>
-                    <option <?php if($row['ESTADO'] == 'SC'){ ?> selected <?php } ?>>SC</option>
-                    <option <?php if($row['ESTADO'] == 'SP'){ ?> selected <?php } ?>>SP</option>
-                    <option <?php if($row['ESTADO'] == 'SE'){ ?> selected <?php } ?>>SE</option>
+                    <option <?php if($c->estado == 'AC'){ ?> selected <?php } ?>>AC</option>
+                    <option <?php if($c->estado == 'AL'){ ?> selected <?php } ?>>AL</option>
+                    <option <?php if($c->estado == 'AP'){ ?> selected <?php } ?>>AP</option>
+                    <option <?php if($c->estado == 'AM'){ ?> selected <?php } ?>>AM</option>
+                    <option <?php if($c->estado == 'BA'){ ?> selected <?php } ?>>BA</option>
+                    <option <?php if($c->estado == 'CE'){ ?> selected <?php } ?>>CE</option>
+                    <option <?php if($c->estado == 'DF'){ ?> selected <?php } ?>>DF</option>
+                    <option <?php if($c->estado == 'ES'){ ?> selected <?php } ?>>ES</option>
+                    <option <?php if($c->estado == 'GO'){ ?> selected <?php } ?>>GO</option>
+                    <option <?php if($c->estado == 'MA'){ ?> selected <?php } ?>>MA</option>
+                    <option <?php if($c->estado == 'MT'){ ?> selected <?php } ?>>MT</option>
+                    <option <?php if($c->estado == 'MS'){ ?> selected <?php } ?>>MS</option>
+                    <option <?php if($c->estado == 'MG'){ ?> selected <?php } ?>>MG</option>
+                    <option <?php if($c->estado == 'PA'){ ?> selected <?php } ?>>PA</option>
+                    <option <?php if($c->estado == 'PB'){ ?> selected <?php } ?>>PB</option>
+                    <option <?php if($c->estado == 'PR'){ ?> selected <?php } ?>>PR</option>
+                    <option <?php if($c->estado == 'PE'){ ?> selected <?php } ?>>PE</option>
+                    <option <?php if($c->estado == 'PI'){ ?> selected <?php } ?>>PI</option>
+                    <option <?php if($c->estado == 'RJ'){ ?> selected <?php } ?>>RJ</option>
+                    <option <?php if($c->estado == 'RN'){ ?> selected <?php } ?>>RN</option>
+                    <option <?php if($c->estado == 'RS'){ ?> selected <?php } ?>>RS</option>
+                    <option <?php if($c->estado == 'RO'){ ?> selected <?php } ?>>RO</option>
+                    <option <?php if($c->estado == 'RR'){ ?> selected <?php } ?>>RR</option>
+                    <option <?php if($c->estado == 'SC'){ ?> selected <?php } ?>>SC</option>
+                    <option <?php if($c->estado == 'SP'){ ?> selected <?php } ?>>SP</option>
+                    <option <?php if($c->estado == 'SE'){ ?> selected <?php } ?>>SE</option>
                     </select>
             </div>
                <div class="form-group">
@@ -151,12 +137,4 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
 </body>
-                        <?php
-                        }
-                                }
-                            } else {
-                                echo "0 results";
-                            }
-                            $conn->close();
-                        ?>
 </html>

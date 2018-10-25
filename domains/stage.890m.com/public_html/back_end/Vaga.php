@@ -150,8 +150,8 @@ if (isset($_POST['method'])) { // aqui é onde vai decorrer a chamada se houver 
         $vaga = new Vaga;
         $vaga->createVaga($_POST);
     } elseif ($method == "alterar") {
-        $candidato = new Candidato;
-        $candidato->alterCandidato($_POST);
+        $empresa = new Candidato;
+        $empresa->alterCandidato($_POST);
     } else {
         
     }

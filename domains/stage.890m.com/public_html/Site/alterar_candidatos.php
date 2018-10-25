@@ -6,8 +6,8 @@
     else{
     include_once '../back_end/Candidato.php';
     $email = $_COOKIE['email'];
-    $candidato = new Candidato();
-    $c = $candidato -> getCandidato($email);
+    $empresa = new Candidato();
+    $c = $empresa -> getCandidato($email);
     }
     ?>
 <html>
