@@ -1,5 +1,7 @@
 <?php
+
 include_once 'Connect.php';
+
 class Vaga {
 
     var $id_vaga;
@@ -16,10 +18,15 @@ class Vaga {
         return $sql;
     }
 
+    public function delete($id) {
+        $sql = "DELETE FROM VAGA WHERE ID_VAGA = $id";
+        return $sql;
+    }
+
     public function alterar($qtd_vagas, $nome, $desc, $estado, $cidade, $cnpj, $id) {
         $sql = "UPDATE VAGA"
-                . " SET QTD_VAGAS = '$qtd_vagas', NOME = '$nome', DESCRICAO = '$desc', VAGA_ESTADO = '$estado', VAGA_CIDADE = '$cidade', CNPJ_EMPRESA = '$cnpj'"
-                . " WHERE ID = '$id'";
+                . " SET QTD_VAGA = '$qtd_vagas', NOME = '$nome', DESCRICAO = '$desc', VAGA_ESTADO = '$estado', VAGA_CIDADE = '$cidade', CNPJ_EMPRESA = '$cnpj'"
+                . " WHERE ID_VAGA = '$id'";
         return $sql;
     }
 
@@ -29,10 +36,10 @@ class Vaga {
         $qtd_vagas = $dados['qtdvagas'];
         $estado = $dados['estado'];
         $cidade = $dados['cidade'];
-        $cnpj_empresa = 7095;
+        $cnpj = $dados['cnpj'];
 
         $c = new Vaga;
-        $query = $c->insert($qtd_vagas, $nome, $desc, $estado, $cidade, $cnpj_empresa);
+        $query = $c->insert($qtd_vagas, $nome, $desc, $estado, $cidade, $cnpj);
 
         $conn = new MySQL;
         $conn->executeQuery($query);
@@ -40,36 +47,71 @@ class Vaga {
         header("Location:../Site/empresa/gerenciar_vagas.php");
         setcookie('cadastrou_vaga', '1');
     }
+
+    public function alterVaga($dados) {
+        setcookie("vaga_id", $_POST['id_vaga'], time() - 3600, '/');
+        $nome = $dados['nome'];
+        $desc = $dados['desc'];
+        $qtd_vagas = $dados['qtdvagas'];
+        $estado = $dados['estado'];
+        $cidade = $dados['cidade'];
+        $cnpj = $dados['cnpj'];
+        $id = $dados['id'];
+
+        $c = new Vaga;
+        $query = $c->alterar($qtd_vagas, $nome, $desc, $estado, $cidade, $cnpj, $id);
+
+        $conn = new MySQL;
+        $conn->executeQuery($query);
+        $conn->disconnect();
+        setcookie("vaga_id", $id, time() + 3600, '/');
+        header("Location:../Site/empresa/gerenciar_vagas.php");
+    }
+
+    public function getVaga($id) {
+        $con = new MySQL;
+        $conn = mysqli_connect($con->host, $con->user, $con->password, $con->database);
+        $vaga = new Vaga();
+
+        $sql = "SELECT * FROM VAGA";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if ($id == $row["ID_VAGA"]) {
+                    $vaga->nome = $row['NOME'];
+                    $vaga->qtd_vagas = $row['QTD_VAGA'];
+                    $vaga->desc = $row['DESCRICAO'];
+                    $vaga->estado = $row['VAGA_ESTADO'];
+                    $vaga->cidade = $row['VAGA_CIDADE'];
+                    $vaga->cnpj_empresa = $row['CNPJ_EMPRESA'];
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        return $vaga;
+    }
+
+    public function getVagas() {
+        $con = new MySQL;
+        $conn = mysqli_connect($con->host, $con->user, $con->password, $con->database);
+        $vaga = new Vaga();
+
+        $sql = "SELECT * FROM VAGA";
+        $result = $conn->query($sql);
+
+        if ($result == false) {
+            return false;
+        }
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     /*
-      public function getVaga($id){
-      $con = new MySQL;
-      $conn = mysqli_connect($con->host, $con->user, $con->password, $con->database);
-      $vaga =new Vaga();
-
-      $sql = "SELECT * FROM CANDIDATOS";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-      if($email == $row["EMAIL"]){
-      $candidato->nome = $row['NOME'];
-      $candidato->cpf = $row['CPF'];
-      $candidato->email = $row['EMAIL'];
-      $candidato->idade = $row['IDADE'];
-      $candidato->telefone = $row['TELEFONE'];
-      $candidato->cidade = $row['CANDIDATO_CIDADE'];
-      $candidato->estado = $row['CANDIDATO_ESTADO'];
-      $candidato->faculdade = $row['FACULDADE'];
-      }
-      }
-      } else {
-      echo "0 results";
-      }
-      $conn->close();
-      return $candidato;
-      }
-
-/*
       public function createCandidato($dados)
       {
       $nome = $dados['nome'];
@@ -150,8 +192,22 @@ if (isset($_POST['method'])) { // aqui é onde vai decorrer a chamada se houver 
         $vaga = new Vaga;
         $vaga->createVaga($_POST);
     } elseif ($method == "alterar") {
-        $empresa = new Candidato;
-        $empresa->alterCandidato($_POST);
+        $empresa = new Vaga();
+        $empresa->alterVaga($_POST);
+    } elseif ($method == "redirect_visualizar_vaga") {
+        setcookie("vaga_id", $_POST['id_vaga'], time() + 3600, '/');
+        header("Location:../Site/empresa/desc_vagas.php");
+    } elseif ($method == "redirect_alterar_vaga") {
+        setcookie("vaga_id", $_POST['id_vaga'], time() + 3600, '/');
+        header("Location:../Site/empresa/alterar_vaga.php");
+    } elseif ($method == "redirect_apagar_vaga") {
+        $vaga = new Vaga();
+        $query = $vaga->delete($_POST['id_vaga']);
+        $conn = new MySQL;
+        $conn->executeQuery($query);
+        $conn->disconnect();
+        setcookie("vaga_id", $_POST['id_vaga'], time() - 3600, '/');
+        header("Location:../Site/empresa/gerenciar_vagas.php");
     } else {
         
     }

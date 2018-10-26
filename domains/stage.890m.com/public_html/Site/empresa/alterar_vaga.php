@@ -1,68 +1,77 @@
 <?php include_once 'navbar_empresa.php'; ?>
+<?php
+include_once '../../back_end/Vaga.php';
+include_once '../../back_end/Empresa.php';
+$id_vaga = $_COOKIE['vaga_id'];
+$vaga = new Vaga();
+$v = $vaga->getVaga($id_vaga);
+?>
+
 <?php $cnpj = $_COOKIE['cnpj']; ?>
 <div class="py-5" style="background-repeat:no-repeat;background-size:cover;background-image: url('img/bg3.jpg');;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 bg-light">
                 <br>
-                <h1 class="display-4 mx-auto text-center">Cadastro de Vagas</h1>
+                <h1 class="display-4 mx-auto text-center">Alterar Vaga</h1>
                 <form method="POST" action="../../back_end/Vaga.php">
-                    <input type="hidden" name="method" value="cadastrar">
+                    <input type="hidden" name="method" value="alterar">
                     <input type="hidden" name="cnpj" value="<?php echo $cnpj?>">
+                    <input type="hidden" name="id" value="<?php echo $id_vaga?>">
                     <div class="form-group" >
                         <small class="form-text text-muted">
                             <b>Titulo da Vaga:</b>
                         </small>
-                        <input type="text" class="form-control" placeholder="" name="nome" id="nome" required> </div>
+                        <input type="text" class="form-control" placeholder="" name="nome" id="nome" value=" <?php echo $v->nome ?> " required> </div>
                     <div class="form-group" >
                         <small class="form-text text-muted">
                             <b>Descrição da vaga:</b>
                         </small>
-                        <textarea rows="10" class="form-control" placeholder="" name="desc" id="desc" required></textarea> </div>
+                        <textarea rows="10" class="form-control" placeholder="" name="desc" id="desc" required><?php echo $v->desc ?></textarea> </div>
                     <div class="form-group">
                         <small class="form-text text-muted">
                             <b>Quantidade de vagas:</b>
                         </small>
-                        <input type="text" class="form-control" placeholder="" name="qtdvagas" id="qtdvagas" required> </div>
+                        <input type="text" class="form-control" placeholder="" name="qtdvagas" id="qtdvagas" value="<?php echo $v->qtd_vagas ?>" required> </div>
                     <div class="form-group">
                         <small class="form-text text-muted">
                             <b>Estado em que se situa a vaga:</b>
                         </small>
-                        <select class="form-control" id="estado" name="estado">
-                            <option>AC</option>
-                            <option>AL</option>
-                            <option>AP</option>
-                            <option>AM</option>
-                            <option>BA</option>
-                            <option>CE</option>
-                            <option>DF</option>
-                            <option>ES</option>
-                            <option>GO</option>
-                            <option>MA</option>
-                            <option>MT</option>
-                            <option>MS</option>
-                            <option>MG</option>
-                            <option>PA</option>
-                            <option>PB</option>
-                            <option>PR</option>
-                            <option>PE</option>
-                            <option>PI</option>
-                            <option>RJ</option>
-                            <option>RN</option>
-                            <option>RS</option>
-                            <option>RO</option>
-                            <option>RR</option>
-                            <option>SC</option>
-                            <option>SP</option>
-                            <option>SE</option>
-                            <option>TO</option>
+                    <select class="form-control" id="estado" name="estado">
+                    <option <?php if($v->estado == 'AC'){ ?> selected <?php } ?>>AC</option>
+                    <option <?php if($v->estado == 'AL'){ ?> selected <?php } ?>>AL</option>
+                    <option <?php if($v->estado == 'AP'){ ?> selected <?php } ?>>AP</option>
+                    <option <?php if($v->estado == 'AM'){ ?> selected <?php } ?>>AM</option>
+                    <option <?php if($v->estado == 'BA'){ ?> selected <?php } ?>>BA</option>
+                    <option <?php if($v->estado == 'CE'){ ?> selected <?php } ?>>CE</option>
+                    <option <?php if($v->estado == 'DF'){ ?> selected <?php } ?>>DF</option>
+                    <option <?php if($v->estado == 'ES'){ ?> selected <?php } ?>>ES</option>
+                    <option <?php if($v->estado == 'GO'){ ?> selected <?php } ?>>GO</option>
+                    <option <?php if($v->estado == 'MA'){ ?> selected <?php } ?>>MA</option>
+                    <option <?php if($v->estado == 'MT'){ ?> selected <?php } ?>>MT</option>
+                    <option <?php if($v->estado == 'MS'){ ?> selected <?php } ?>>MS</option>
+                    <option <?php if($v->estado == 'MG'){ ?> selected <?php } ?>>MG</option>
+                    <option <?php if($v->estado == 'PA'){ ?> selected <?php } ?>>PA</option>
+                    <option <?php if($v->estado == 'PB'){ ?> selected <?php } ?>>PB</option>
+                    <option <?php if($v->estado == 'PR'){ ?> selected <?php } ?>>PR</option>
+                    <option <?php if($v->estado == 'PE'){ ?> selected <?php } ?>>PE</option>
+                    <option <?php if($v->estado == 'PI'){ ?> selected <?php } ?>>PI</option>
+                    <option <?php if($v->estado == 'RJ'){ ?> selected <?php } ?>>RJ</option>
+                    <option <?php if($v->estado == 'RN'){ ?> selected <?php } ?>>RN</option>
+                    <option <?php if($v->estado == 'RS'){ ?> selected <?php } ?>>RS</option>
+                    <option <?php if($v->estado == 'RO'){ ?> selected <?php } ?>>RO</option>
+                    <option <?php if($v->estado == 'RR'){ ?> selected <?php } ?>>RR</option>
+                    <option <?php if($v->estado == 'SC'){ ?> selected <?php } ?>>SC</option>
+                    <option <?php if($v->estado == 'SP'){ ?> selected <?php } ?>>SP</option>
+                    <option <?php if($v->estado == 'SE'){ ?> selected <?php } ?>>SE</option>
+                    </select>
                         </select>
                     </div>
                     <div class="form-group">
                         <small class="form-text text-muted">
                             <b>Cidade em que se situa a vaga:</b>
                         </small>
-                        <input type="text" class="form-control" placeholder="" name="cidade" id="idade" required> </div>
+                        <input type="text" class="form-control" placeholder="" name="cidade" id="idade" value="<?php echo $v->cidade ?>" required> </div>
                     <div class="form-group">
                         <small class="form-text text-muted">
                             <b>Requisitos (Conhcimentos desejados):</b>

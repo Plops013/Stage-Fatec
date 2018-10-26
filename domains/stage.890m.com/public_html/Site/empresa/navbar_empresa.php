@@ -26,7 +26,7 @@
             <a class="nav-link" href="perfil.php">Bem Vindo:&nbsp;
               <i class="fa d-inline fa-lg fa-user-circle-o"></i> 
                                                                     <?php 
-                                                                    echo $_COOKIE['email'];
+                                                                    echo $_COOKIE['nome_fantasia'];
                                                                     ?></a>
           </li>
         </ul>

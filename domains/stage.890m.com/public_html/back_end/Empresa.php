@@ -76,12 +76,18 @@ class Empresa {
     }
 
     public function alterEmpresa($dados) {
-        
+
         unset($_COOKIE['email']);
         setcookie("email", "", time() - 3600, "/");
 
         unset($_COOKIE['empresa']);
         setcookie("empresa", "", time() - 3600, "/");
+
+        unset($_COOKIE['nome_fantasia']);
+        setcookie("nome_fantasia", "", time() - 3600, "/");
+
+        unset($_COOKIE['cnpj']);
+        setcookie("cnpj", "", time() - 3600, "/");
 
         $nome_fantasia = $dados['nome_fantasia'];
         $email = $dados['email'];
@@ -101,10 +107,40 @@ class Empresa {
 
         setcookie("email", $email, time() + 3600, '/');
         setcookie("empresa", $email, time() + 3600, '/');
+        setcookie("nome_fantasia", $nome_fantasia, time() + 3600, '/');
+        setcookie("cnpj", $cnpj, time() + 3600, '/');
 
         header("Location:../Site/empresa/perfil.php");
     }
 
+     public function getVagaEmpresa($cnpj)
+    {        
+        $con = new MySQL;
+        $conn = mysqli_connect($con->host, $con->user, $con->password, $con->database);
+        $empresa = new Empresa();
+
+        $sql = "SELECT * FROM EMPRESA WHERE CNPJ = $cnpj";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if ($cnpj == $row["CNPJ"]) {
+                    $empresa->email = $email;
+                    $empresa->nome_fantasia = $row['NOME_FANTASIA'];
+                    $empresa->razao_social = $row['RAZAO_SOCIAL'];
+                    $empresa->cidade = $row['CIDADE'];
+                    $empresa->estado = $row['ESTADO'];
+                    $empresa->telefone = $row['TELEFONE'];
+                    $empresa->cnpj = $row['CNPJ'];
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        return $empresa;
+    }
+    
     public function delete($email) {
         $sql = "DELETE FROM EMPRESA WHERE EMAIL = '$email'";
         return $sql;

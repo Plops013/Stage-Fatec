@@ -1,6 +1,6 @@
 <?php
-
-   $email = $_POST['email'];
+    include_once 'Empresa.php';
+    $email = $_POST['email'];
     $senha = md5($_POST['pass']);
     
     $servername = "localhost";
@@ -24,7 +24,11 @@
         }else{
           session_start();
           echo "Logado com sucesso";
+          $empresa = new Empresa();
+          $e = $empresa->getEmpresa($email);
           session_destroy();
+          setcookie("nome_fantasia", $e->nome_fantasia,time() + 3600,'/');
+          setcookie("cnpj", $e->cnpj,time() + 3600,'/');
           setcookie("email", $email,time() + 3600,'/');
           setcookie("empresa", $email,time() + 3600,'/');
           header("Location:../Site/empresa/home2.php");
