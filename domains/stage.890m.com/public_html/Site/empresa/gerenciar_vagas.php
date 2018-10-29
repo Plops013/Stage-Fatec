@@ -43,9 +43,6 @@ if (!isset($_COOKIE['email'])) {
                 <br/>
             </div>
         </div>
-        <?php if ($result == null) { ?>
-                    <h1 class="text-danger">Nenhuma Vaga Registrada!</h1>
-        <?php } ?>
         <?php
         foreach ($result as $key => $res) {
             if ($res['CNPJ_EMPRESA'] == $cnpj) {
