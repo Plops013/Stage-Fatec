@@ -1,67 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="theme.css" type="text/css"> </head>
-
-<body class="">
-
-  <nav class="navbar navbar-expand-md bg-primary navbar-dark bg-gradient">
-    <div class="container">
-      <a class="navbar-brand" href="home2.php">
-        <i class="fa d-inline fa-lg fa-cloud"></i>
-        <b class="text-uppercase">Stage</b>
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bem Vindo:&nbsp;
-              <i class="fa d-inline fa-lg fa-user-circle-o"></i>  <?php 
-                                                                    echo $_COOKIE['email'];
-                                                                    ?></a>
-          </li>
-        </ul>
-          <a href="../back_end/disconnect_user.php">
-              <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="C:/Users/Lucas Monteiro/Desktop/New Site/loguin.html#"> &nbsp;Logoff</button></a>
-      </div>
-    </div>
-  </nav>
-                                    <?php 
-                            if(!isset($_COOKIE['email'])){
-                                header("Location:../Site/home.php");
-                            }
-                            
-                            
-                            $servername = "localhost";
-                            $database = "u687165544_stage";
-                            $username = "u687165544_fatec";
-                            $password = "fatecanos2000";
-                            $query = "SELECT NAME FROM CANDIDATOS";
-                            
-                            $cpf;
-                            $cnpj;
-                            
-                            $conn = mysqli_connect($servername, $username, $password, $database);
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            } 
-                            
-                            if (isset($_COOKIE['candidato']) && !isset($_COOKIE['empresa'])){
-                            $sql = "SELECT * FROM CANDIDATOS";
-                            
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    if($_COOKIE['email'] == $row["EMAIL"] && !isset($_COOKIE['empresa']) && !isset($_COOKIE['candidato'])){
-                                    
-                         ?>
+<?php  
+    include_once '../../back_end/Candidato.php';
+    $email = $_COOKIE['email'];
+    $candidato = new Candidato();
+    $c = $candidato -> getCandidato($email);
+    ?>
+<?php include_once 'navbar_candidato.php'; ?>
   <div class="">
     <div class="container">
       <div class="row">
@@ -88,38 +31,30 @@
           <div class="row">
             <div class="col-md-6">
             <div class="row"><hr></div>
-              <img src="img/perfil.jpg" id="foto-perfil"> </div>
+              <img src="../img/perfil.jpg" id="foto-perfil"> </div>
               
               <div class="col-md-6">
                         <div class="row"><hr></div>
                         <li class="list-group-item" >
-                            Nome: <?php print $row['NOME'];  ?></li>
-                        <li class="list-group-item" >Idade: <?php print $row['IDADE'];  ?></li>
-                        <li class="list-group-item" >CPF: <?php print $row['CPF'];  ?></li>
-                        <li class="list-group-item">Email: <?php print $row['EMAIL'];  ?></li>
-                        <li class="list-group-item">Tel: <?php print $row['TELEFONE'];  ?></li>
-                        <li class="list-group-item">Estado: <?php print $row['CANDIDATO_ESTADO'];  ?></li>
-                        <li class="list-group-item">Cidade: <?php print $row['CANDIDATO_CIDADE'];  ?></li>
-                        <li class="list-group-item">Escolaridade: <?php print $row['FACULDADE'];  ?></li>
+                            Nome: <?php print $c->nome;  ?></li>
+                        <li class="list-group-item" >Idade: <?php print $c->idade;  ?></li>
+                        <li class="list-group-item" >CPF: <?php print $c->cpf;  ?></li>
+                        <li class="list-group-item">Email: <?php print $c->email;  ?></li>
+                        <li class="list-group-item">Tel: <?php print $c->telefone;  ?></li>
+                        <li class="list-group-item">Estado: <?php print $c->estado;  ?></li>
+                        <li class="list-group-item">Cidade: <?php print $c->cidade;  ?></li>
+                        <li class="list-group-item">Escolaridade: <?php print $c->faculdade;  ?></li>
                         <li class="list-group-item">Senha: <?php print "********";  ?></li>
-                        <?php
-                        }
-                                }
-                            } else {
-                                echo "0 results";
-                            }
-                            $conn->close();
-                        ?>
                         <br>
                         <div class="row">
                   <div class="col-md-3">
                      <a  href="alterar_candidatos.php">
-                    <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >Alterar Dados</button>
+                    <button  type="button" class="btn btn-primary" >Alterar Dados</button>
                      </a>
                   </div>
                     <div class="col-md-6">
                     <a  href="delete_msg.php">
-                        <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >Excluir Dados</button>  </a>     
+                        <button  type="button" class="btn btn-danger" >Excluir Dados</button>  </a>     
                       </div>
                      </div>
                 </div>
@@ -129,84 +64,6 @@
           </div>
         </div>
       </div>
- 
-                            <?php } elseif(isset ($_COOKIE['empresa']) && !isset($_COOKIE['candidato'])){ 
-                                $sql = "SELECT * FROM EMPRESA";
-                            
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    if($_COOKIE['email'] == $row["EMAIL"]){ ?>
-    
-    <div class="">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a href="home2.php" class="nav-link">
-                <i class="fa fa-home fa-home"></i>&nbsp;Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="perfil.php">
-                <i class="fa fa-address-card-o"></i>&nbsp;Perfil</a>
-
-            </li>
-            <li class="nav-item">
-              <a href="participacoes.php" class="nav-link">
-                  <i class="fa fa-handshake-o"></i>&nbsp;Participações</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-6">
-            <div class="row"><hr></div>
-              <img src="img/perfil.jpg" id="foto-perfil"> </div>
-              
-              <div class="col-md-6">
-                        <div class="row"><hr></div>
-                        <li class="list-group-item" >Nome Fantasia: <?php print $row['NOME_FANTASIA'];  ?></li>
-                        <li class="list-group-item" >Razão Social: <?php print $row['RAZAO_SOCIAL'];  ?></li>
-                        <li class="list-group-item">Email: <?php print $row['EMAIL'];  ?></li>
-                        <li class="list-group-item">Telefone: <?php print $row['TELEFONE'];  ?></li>
-                        <li class="list-group-item">Estado: <?php print $row['ESTADO'];  ?></li>
-                        <li class="list-group-item">Cidade: <?php print $row['CIDADE'];  ?></li>
-                        <li class="list-group-item">CNPJ: <?php print $row['CNPJ'];  ?></li>
-                        <li class="list-group-item">Senha: <?php print "********";  ?></li>
-                        <?php
-                        }
-                                }
-                            } else {
-                                echo "0 results";
-                            }
-                            $conn->close();
-                        ?>
-                        <br>
-                        <div class="row">
-                  <div class="col-md-3">
-                     <a  href="alterar_empresa.php">
-                    <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >Alterar Dados</button>
-                     </a>
-                  </div>
-                    <div class="col-md-6">
-                    <a  href="delete_msg.php">
-                        <button  type="button" class="btn btn-primary" style="background-color: #00BFFF;border-radius: 4px"  >Excluir Dados</button>  </a>     
-                      </div>
-                     </div>
-                </div>
-              
-                    </div> <div class="row"><hr></div>
-            </div> <div class="row"><hr></div>
-          </div>
-        </div>
-      </div>
-    
-                             <?php } ?>
   <div class="py-5 bg-dark text-white bg-gradient">
     <div class="container">
       <div class="row">

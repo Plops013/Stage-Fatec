@@ -32,7 +32,7 @@
           setcookie("email", $email,time() + 3600,'/');
           setcookie("nome", $empresa->nome,time() + 3600,'/');
           setcookie("candidato", $email,time() + 3600,'/');
-          header("Location:../Site/home2.php");
+          header("Location:../Site/candidato/home2.php");
         }
 /* 
  * To change this license header, choose License Headers in Project Properties.

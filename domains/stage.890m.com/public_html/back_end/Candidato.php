@@ -113,7 +113,7 @@
         setcookie("email", $email,time() + 3600,'/');
         setcookie("candidato", $email,time() + 3600,'/');
         //redireciona para perfil.php
-        header("Location:../Site/perfil.php");
+        header("Location:../Site/candidato/perfil.php");
         }
        
     public function delete($email){

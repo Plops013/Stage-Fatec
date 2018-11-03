@@ -39,18 +39,18 @@ if (!isset($_COOKIE['email'])) {
                 <br/>
             </div>
         </div>     
-        
-       <?php if($result == null) {?>
-        <h1>Nenhuma Vaga Registrada!</h1>
-        <?php }?>
-        
+
+        <?php if ($result == null) { ?>
+            <h1>Nenhuma Vaga Registrada!</h1>
+        <?php } ?>
+
         <?php
         foreach ($result as $key => $res) {
             ?>
             <div class="row">
                 <div class="col-md-12">
+                    
                     <div class="card-body bg-info">
-
                         <h4><?php
                             $empresa = new Empresa();
                             $e = $empresa->getVagaEmpresa($res['CNPJ_EMPRESA']);
@@ -64,9 +64,9 @@ if (!isset($_COOKIE['email'])) {
                             <tr>
                                 <td>
                                     <form method="POST" action="../../back_end/Vaga.php">
-                                    <input type="hidden" name="id_vaga" value="<?php echo $res['ID_VAGA'] ?>">
-                                    <input type="hidden" name="method" value="redirect_visualizar_vaga">
-                                    <input type="submit" value="Visualizar" class="btn btn-primary">
+                                        <input type="hidden" name="id_vaga" value="<?php echo $res['ID_VAGA'] ?>">
+                                        <input type="hidden" name="method" value="redirect_visualizar_vaga">
+                                        <input type="submit" value="Visualizar" class="btn btn-primary">
                                     </form>
                                 </td>
                         </table>

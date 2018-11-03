@@ -98,7 +98,7 @@ class Vaga {
         $conn = mysqli_connect($con->host, $con->user, $con->password, $con->database);
         $vaga = new Vaga();
 
-        $sql = "SELECT * FROM VAGA";
+        $sql = "SELECT * FROM VAGA ORDER BY ID_VAGA DESC";
         $result = $conn->query($sql);
 
         if ($result == false) {
@@ -196,7 +196,12 @@ if (isset($_POST['method'])) { // aqui é onde vai decorrer a chamada se houver 
         $empresa->alterVaga($_POST);
     } elseif ($method == "redirect_visualizar_vaga") {
         setcookie("vaga_id", $_POST['id_vaga'], time() + 3600, '/');
-        header("Location:../Site/empresa/desc_vagas.php");
+        if (isset($_COOKIE['empresa'])) {
+            header("Location:../Site/empresa/desc_vagas.php");
+        }
+        if (isset($_COOKIE['candidato'])) {
+            header("Location:../Site/candidato/desc_vagas.php");
+        }
     } elseif ($method == "redirect_alterar_vaga") {
         setcookie("vaga_id", $_POST['id_vaga'], time() + 3600, '/');
         header("Location:../Site/empresa/alterar_vaga.php");

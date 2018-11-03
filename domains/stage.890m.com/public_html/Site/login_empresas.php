@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
-
+                          <?php
+                          if(isset($_COOKIE['email']) || isset($_COOKIE['empresa'])){
+                          header("Location:empresa/home2.php");
+                            }
+                          if(isset($_COOKIE['email']) || isset($_COOKIE['candidato'])){
+                          header("Location:home2.php");
+                            }?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
