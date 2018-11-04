@@ -49,11 +49,39 @@
                 <b>Insira sua cidade</b>
               </small>
               <input type="text" class="form-control" value="<?php print $c->cidade;  ?>" placeholder="Sua cidade" name="cidade" id="cidade"> </div>
-              <div class="form-group">
+                <div class="form-group">
               <small class="form-text text-muted">
-                <b>Insira seu Estado</b>
+                <b>Estado em que se situa a vaga:</b>
               </small>
-              <input type="text" class="form-control" value="<?php print $c->estado;  ?>" placeholder="SP" name="estado" id="estado"> </div>
+                    <select class="form-control" id="estado" name="estado">
+                    <option <?php if($c->estado == 'AC'){ ?> selected <?php } ?>>AC</option>
+                    <option <?php if($c->estado == 'AL'){ ?> selected <?php } ?>>AL</option>
+                    <option <?php if($c->estado == 'AP'){ ?> selected <?php } ?>>AP</option>
+                    <option <?php if($c->estado == 'AM'){ ?> selected <?php } ?>>AM</option>
+                    <option <?php if($c->estado == 'BA'){ ?> selected <?php } ?>>BA</option>
+                    <option <?php if($c->estado == 'CE'){ ?> selected <?php } ?>>CE</option>
+                    <option <?php if($c->estado == 'DF'){ ?> selected <?php } ?>>DF</option>
+                    <option <?php if($c->estado == 'ES'){ ?> selected <?php } ?>>ES</option>
+                    <option <?php if($c->estado == 'GO'){ ?> selected <?php } ?>>GO</option>
+                    <option <?php if($c->estado == 'MA'){ ?> selected <?php } ?>>MA</option>
+                    <option <?php if($c->estado == 'MT'){ ?> selected <?php } ?>>MT</option>
+                    <option <?php if($c->estado == 'MS'){ ?> selected <?php } ?>>MS</option>
+                    <option <?php if($c->estado == 'MG'){ ?> selected <?php } ?>>MG</option>
+                    <option <?php if($c->estado == 'PA'){ ?> selected <?php } ?>>PA</option>
+                    <option <?php if($c->estado == 'PB'){ ?> selected <?php } ?>>PB</option>
+                    <option <?php if($c->estado == 'PR'){ ?> selected <?php } ?>>PR</option>
+                    <option <?php if($c->estado == 'PE'){ ?> selected <?php } ?>>PE</option>
+                    <option <?php if($c->estado == 'PI'){ ?> selected <?php } ?>>PI</option>
+                    <option <?php if($c->estado == 'RJ'){ ?> selected <?php } ?>>RJ</option>
+                    <option <?php if($c->estado == 'RN'){ ?> selected <?php } ?>>RN</option>
+                    <option <?php if($c->estado == 'RS'){ ?> selected <?php } ?>>RS</option>
+                    <option <?php if($c->estado == 'RO'){ ?> selected <?php } ?>>RO</option>
+                    <option <?php if($c->estado == 'RR'){ ?> selected <?php } ?>>RR</option>
+                    <option <?php if($c->estado == 'SC'){ ?> selected <?php } ?>>SC</option>
+                    <option <?php if($c->estado == 'SP'){ ?> selected <?php } ?>>SP</option>
+                    <option <?php if($c->estado == 'SE'){ ?> selected <?php } ?>>SE</option>
+                    </select>
+            </div>
             <div class="form-group">
               <small class="form-text text-muted">
                 <b>Insira sua instituição de ensino:</b>
