@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="theme.css" type="text/css"> </head>
+  <link rel="stylesheet" href="../theme.css" type="text/css"> </head>
 
 <body>
   <nav class="navbar navbar-expand-md bg-primary navbar-dark bg-gradient">
@@ -52,18 +52,16 @@
             </li>
             <li class="nav-item">
               <a href="participacoes.php" class="nav-link active">
-                  <i class="fa fa-handshake-o"></i>&nbsp;Minhas Vagas</a>
+                  <i class="fa fa-handshake-o"></i>&nbsp;Participações</a>
                   </li>
           </ul>
           <div class="row">
             <div class="col-md-12">
-                <br/>
-                <a href="vagas.php">
-                <button class="btn btn-success"> Criar Vaga </button>
-                </a>
+              <div class="row">
+                <hr>
+              </div>
             </div>
           </div>
-            <br/>
         </div>
       </div>
       <div class="row">
@@ -72,9 +70,7 @@
             <h4>Empresa x tecnolgy Ltda.</h4>
             <h6 class="text-muted">Analista Desenvolvedor Java</h6>
             <p>Procuramos Profissional que tenha conhecimento em Java</p>
-            <a href="ranking.php" class="btn btn-primary">Ver Raking</a>
-                <button class="btn btn-warning"> Alterar Vaga </button>
-                <button class="btn btn-danger"> Apagar Vaga </button>
+            <a href="ranking.php" class="btn btn-outline-dark">Ver Raking</a>
           </div>
         </div>
       </div>

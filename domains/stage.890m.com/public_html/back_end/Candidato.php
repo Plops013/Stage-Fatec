@@ -149,7 +149,7 @@
         // envia um vetor $_POST, com todas informações do post
         $empresa->createCandidato($_POST);
      }
-     elseif ($method == "alterar" ){
+     if ($method == "alterar" ){
         $empresa = new Candidato;
         $empresa->alterCandidato($_POST); 
      }
