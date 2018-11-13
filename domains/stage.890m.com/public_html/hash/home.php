@@ -98,6 +98,9 @@ if ($_POST['reset'] != null) {
                 <h2>C</h2>
                 <p>hash(<span class="text-warning">dado</span>);</p>
                 Fonte : <a href="https://www.vivaolinux.com.br/script/Funcao-de-hash-simples-em-C" target="_blank">Clique aqui</a>
+                <br/>
+                <br/>
+                <h1><a href="https://github.com/Plops013/Stage-Fatec/blob/STAGES/domains/stage.890m.com/public_html/hash/home.php" target="_blank">Codigo Fonte</a></h1>
             </div>
         </div>
     </body>
